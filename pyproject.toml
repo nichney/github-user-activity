@@ -3,8 +3,14 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "github-user-activity"
+name = "github_user_activity"
 version = "0.0.1"
+
+[project.scripts]
+github-activity = "github_user_activity.github_activity:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
