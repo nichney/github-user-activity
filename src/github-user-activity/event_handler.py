@@ -19,43 +19,43 @@ class Handler:
         return [f"Created branch, tag or repo in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_delete(self, subdict):
-        return []
+        return [f"Deleted branch or tag in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_fork(self, subdict):
-        return []
+        return [f"Forked {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_gollum(self, subdict):
-        return []
+        return [f"Created or updated wiki page for {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_issue_comment(self, subdict):
-        return []
+        return [f"Performed something with comment issue in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_issue(self, subdict):
-        return []
+        return [f"Done something with issue in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_member(self, subdict):
-        return []
+        return [f"Collaborate with {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_public(self, subdict):
-        return []
+        return [f"Made {repo} public" for repo, times in subdict.items() if times >= 1]
 
     def handle_pull_request(self, subdict):
-        return []
+        return [f"Performed an action with pull request in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_pull_request_review(self, subdict):
-        return []
+        return [f"Created pull request review in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_pull_request_review_comment(self, subdict):
-        return []
+        return [f"Commented pull request review in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_pull_request_review_thread(self, subdict):
-        return []
+        return [f"Performed something with pull request thread in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_release(self, subdict):
-        return []
+        return [f"Released something in {repo}" for repo, times in subdict.items() if times >= 1]
 
     def handle_sponsor(self, subdict):
-        return []
+        return [f"Became a sponsor of {repo}" for repo, times in subdict.items() if times >= 1]
 
     @property
     def handler_map(self):
@@ -67,7 +67,7 @@ class Handler:
          "ForkEvent": self.handle_fork, 
          "GollumEvent": self.handle_gollum,
          "IssueCommentEvent": self.handle_issue_comment,
-         "IssueEvent": self.handle_issue,
+         "IssuesEvent": self.handle_issue,
          "MemberEvent": self.handle_member,
          "PublicEvent": self.handle_public,
          "PullRequestEvent": self.handle_pull_request,
