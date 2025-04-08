@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # Script is getting github user's activity
 # features:
-
-from urllib.request import urlopen
 from urllib.error import HTTPError
 import argparse
 import json
@@ -11,6 +9,7 @@ from collections import defaultdict
 from typing import Dict
 
 from .event_handler import Handler
+from .cache_responses import fetch_url
 
 
 def collect_info(raw_activity: list, fil: str = "DefaultEvent") -> list:
@@ -39,8 +38,8 @@ def fetch_activity(args) -> bool:
         print("Username required")
         return False
     try:
-        with urlopen(f"https://api.github.com/users/{args.username}/events") as r:
-            body = r.read()
+        with fetch_url(f"https://api.github.com/users/{args.username}/events") as body:
+            #body = r.read()
             activity = json.loads(body)
             del body  # delete unused data
 
